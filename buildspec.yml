@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  prebuild:
+    commands:
+      - pip install aws-sam-cli
+  build:
+    commands:
+      - sam build
+      - sam package --s3-bucket=$BUCKET --output-template-file output.yaml
+artifacts:
+  files:
+    - 'output.yaml'
